@@ -2,7 +2,11 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 
-if (process.env.NODE_ENV === "development") {
+if (
+  typeof window !== "undefined" &&
+  process.env.NODE_ENV === "development" &&
+  /VIVID_ENABLED=true/.test(document.cookie)
+) {
   import("vivid-studio").then((v) => v.run());
   import("vivid-studio/style");
 }
